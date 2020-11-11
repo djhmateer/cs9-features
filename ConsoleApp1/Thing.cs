@@ -8,6 +8,11 @@ namespace ConsoleApp1
 {
     public class Thing
     {
-        public string Name { get; set; }      
+        public string FirstName { get; set; }
+
+        //public Thing(string? firstName)
+        //{
+        //    FirstName = firstName;
+        //}
     }
 }

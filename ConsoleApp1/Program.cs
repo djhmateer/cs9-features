@@ -11,9 +11,9 @@ using CsvHelper;
 
 // this is in ConsoleApp1 namespace in the Thing Class
 var thing = new Thing();
-thing.Name = "Bob";
+thing.FirstName = "Bob";
 
-Thing thing2 = new Thing { Name = "Alice" };
+//Thing thing2 = new Thing { FirstName = "Alice" };
 
 using var db = GetOpenConnection();
 
@@ -38,7 +38,7 @@ foreach (var actor in actors.Take(50))
 var someActors = await db.QueryAsync<Actor>(@"
     SELECT TOP 10 * 
     FROM Actors 
-    ORDER BY Name DESC");
+    ORDER BY FirstName DESC");
 
 foreach (var someActor in someActors)
     Console.WriteLine($"{someActor.actorid} {someActor.name} {someActor.sex}");
