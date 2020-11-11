@@ -15,8 +15,6 @@ thing.Name = "Bob";
 
 Thing thing2 = new Thing { Name = "Alice" };
 
-
-
 using var db = GetOpenConnection();
 
 // Clear down db first (using Dapper)
@@ -61,8 +59,8 @@ List<Actor> LoadActorsFromCsv()
 // a local function to help Dapper
 IDbConnection GetOpenConnection()
 {
-    //var connStrng = @"Server=.\;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
-    var connStrng = @"Server=(localdb)\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
+    var connStrng = @"Server=.\;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
+    //var connStrng = @"Server=(localdb)\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
     var connection = new SqlConnection(connStrng);
     return connection;
 }
