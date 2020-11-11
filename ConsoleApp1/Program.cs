@@ -54,7 +54,6 @@ IDbConnection GetOpenConnection()
 {
     var connection = new SqlConnection(
         "Server=.\\;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
-    connection.Open();
     return connection;
 }
 
