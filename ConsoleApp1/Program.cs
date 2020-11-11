@@ -6,7 +6,16 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using ConsoleApp1;
 using CsvHelper;
+
+// this is in ConsoleApp1 namespace in the Thing Class
+var thing = new Thing();
+thing.Name = "Bob";
+
+Thing thing2 = new Thing { Name = "Alice" };
+
+
 
 using var db = GetOpenConnection();
 
@@ -33,11 +42,11 @@ var someActors = await db.QueryAsync<Actor>(@"
     FROM Actors 
     ORDER BY Name DESC");
 
-foreach (var someActor in someActors) 
+foreach (var someActor in someActors)
     Console.WriteLine($"{someActor.actorid} {someActor.name} {someActor.sex}");
 
 Console.WriteLine("Done");
-    
+
 
 
 // local function using CsvHelper to read a csv
@@ -52,8 +61,9 @@ List<Actor> LoadActorsFromCsv()
 // a local function to help Dapper
 IDbConnection GetOpenConnection()
 {
-    var connection = new SqlConnection(
-        "Server=.\\;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true");
+    //var connStrng = @"Server=.\;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
+    var connStrng = @"Server=(localdb)\mssqllocaldb;Database=IMDBChallenge;Trusted_Connection=True;MultipleActiveResultSets=true";
+    var connection = new SqlConnection(connStrng);
     return connection;
 }
 
